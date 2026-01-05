@@ -33,3 +33,25 @@ function renderCarrito() {
 
   totalTexto.textContent = "Total: $" + total;
 }
+
+function comprar() {
+  if (carrito.length === 0) {
+    alert("El carrito está vacío");
+    return;
+  }
+
+  let mensaje = "Hola, quiero comprar:%0A";
+  let total = 0;
+
+  carrito.forEach(p => {
+    mensaje += `- ${p.nombre} ($${p.precio})%0A`;
+    total += p.precio;
+  });
+
+  mensaje += `%0ATotal: $${total}`;
+
+  const telefono = "598098981013"; // CAMBIÁ ESTO POR TU NÚMERO
+  const url = `https://wa.me/${telefono}?text=${mensaje}`;
+
+  window.open(url, "_blank");
+}
